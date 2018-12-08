@@ -65,6 +65,13 @@ const clinton = {
 
 const presidents = [kennedy, johnson, nixon, ford, carter, reagan, bush, clinton];
 
+const currentPrez = presidents[Math.floor(Math.random() * presidents.length)];
+
+
+
+
+
+
 // game code calls
 // for (i = 0; i < presidents.length; i++) {
 // 	console.log(`${presidents[i].firstName} ${presidents[i].lastName} was the ${presidents[i].order} President from ${presidents[i].term}`);
@@ -76,8 +83,28 @@ const presidents = [kennedy, johnson, nixon, ford, carter, reagan, bush, clinton
 // 	}
 // }
 
-presidents[0].lastNameArr.forEach(function() {
-	document.getElementById("pres").innerHTML += "<span> _ </span>";
+let blank = '<span id="blank"> _ </span>';
+
+currentPrez.lastNameArr.forEach(function() {
+	document.getElementById("prez").innerHTML += blank;
 });
+
+document.onkeyup = function(e) {
+	let gameStart = event.key;
+	for (i = 0; i < currentPrez.lastNameArr.length; i++) {
+		if (gameStart.toUpperCase() === currentPrez.lastNameArr[i]) {
+			document.getElementById("blank").innerHTML = currentPrez.lastNameArr[i];
+		}
+	}
+}
+		// } else {
+// 			// document.getElementById("pres").innerHTML += "<span> _ </span>";
+
+// 		}
+// 	}
+// }
+
+
+
 
 

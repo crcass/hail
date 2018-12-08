@@ -1,0 +1,47 @@
+body {
+	font-family: 'Merriweather', serif;
+	color: #E5E5E5;
+}
+
+.container {
+	background-image: linear-gradient(to left, rgba(0, 0, 255, 0.5), rgba(255, 0, 0, 0.5)),
+					  url(../../assets/images/wh1.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 35rem;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	margin-top: 4rem;
+}
+
+section {
+	margin-top: 4rem;
+}
+
+h1 {
+	font-size: 2.5rem;
+	margin-bottom: 1rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+p {
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+
+#win {
+	display: none;
+}
