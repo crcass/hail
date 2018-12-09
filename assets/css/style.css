@@ -1,6 +1,8 @@
 body {
 	font-family: 'Merriweather', serif;
 	color: #E5E5E5;
+	background: url(../../assets/images/creampaper.png);
+
 }
 
 .container {
@@ -14,8 +16,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	border-bottom: 0.5rem solid #F5B841;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
-				0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 main {
@@ -40,24 +40,48 @@ h3 {
 	margin-bottom: 0.5rem;
 }
 
+h5 {
+	margin-top: 2rem;
+}
+
 p {
 	font-size: 2rem;
 	text-transform: uppercase;
+	margin: 1rem 0;
 }
 
-#win {
+.container span {
+	bottom: 0;
+}
+
+#win, #game, #on {
 	display: none;
 }
 
-
 .bottom-content {
-	background-image: url(../../assets/images/creampaper.png);
 	height: 9rem;
+	background-color: rgba(0, 0, 50, 0.75);
+	display: flex;
+	justify-content: center;
 }
 
 .score {
-	background-color: rgba(0, 0, 50, 0.75);
-	height: 100%;
+	margin: 1rem 10rem;
+	text-align: center;
+}
+
+#reset {
+	margin-top: 0.75rem;
+	margin-left: 2rem;
+	width: 8%;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.image-container {
 }
 
 footer {
@@ -69,6 +93,7 @@ footer {
 	bottom: 0;
 	width: 100%;
 	height: 2rem;
+	font-size: 0.75rem;
 }
 
 footer span {
