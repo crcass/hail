@@ -1,72 +1,113 @@
-// global variables
+var start = document.getElementById('start');
 
-const presidents = ['kennedy', 'johnson', 'nixon', 'ford', 'carter', 'reagan', 'bush', 'clinton'];
+var prez = document.getElementById('prez');
 
-const currentPrez = presidents[Math.floor(Math.random() * presidents.length)];
+var on = document.getElementById('on');
 
-const solution = [];
+var answer = document.getElementById('answer');
 
-const unused = [];
+var wrong = document.getElementById('wrong');
 
-let guess = currentPrez.length;
+var victory = document.getElementById('wins');
 
-for (i = 0; i < currentPrez.length; i++) {
-	solution[i] = ' _ ';
-}
+var defeat = document.getElementById('losses');
 
-let totalGuesses = currentPrez.length + 4;
+var resetText = document.getElementById('reset-text');
 
-let wins = 0;
+var hail = new Audio('./assets/audio/hailtothechief.mp3')
 
-let losses = 0;
+var presidents = ['kennedy', 'johnson', 'nixon', 'ford', 'carter', 'reagan', 'bush', 'clinton'];
 
-const start = document.getElementById('start');
+var currentPrez = presidents[Math.floor(Math.random() * presidents.length)];
 
-const game = document.getElementById('game');
+var guess = currentPrez.length;
 
-const on = document.getElementById('on');
+var totalGuesses = currentPrez.length + 4;
 
-const answer = document.getElementById('answer');
+var userInput
 
-const wrong = document.getElementById('wrong');
+var game = {
 
-const victory = document.getElementById('wins');
+	solution: [],
+	unused: [],
+	wins: 0,
+	losses: 0,
 
-const defeat = document.getElementById('losses');
-
-// game code
-
-document.onkeypress = function (event) {
-	start.style.visibility = 'hidden';
-	game.style.display = 'block';
-	on.style.display = 'block';
-	victory.textContent = wins;
-	defeat.textContent = losses;
-	let userInput = event.key;
-	//match
-	if (guess > 0) {
-		for (j = 0; j < currentPrez.length; j++) {
-		if (userInput === currentPrez[j]) {
-			solution.splice([j], 1, userInput);
-			guess--;
+	setup: function() {
+		for (i = 0; i < currentPrez.length; i++) {
+			this.solution[i] = ' _ ';
 			}
-		} 
-		answer.textContent = solution.join(' ');
-	//no match
-	} if ((solution.includes(userInput) === false) && unused.includes(userInput) === false) {
-		unused.push(userInput);
-		wrong.textContent = unused.join(' ');
+	},
+
+	match: function() {
+		for (j = 0; j < currentPrez.length; j++) {
+			if (userInput === currentPrez[j]) {
+				this.solution.splice([j], 1, userInput);
+				guess--;
+				}
+			} 
+			answer.textContent = this.solution.join(' ');
+	},
+
+	noMatch: function() {
+		this.unused.push(userInput);
+		wrong.textContent = this.unused.join(' ');
 		totalGuesses--;
 		on.textContent = ('Unused Letters - ' + totalGuesses + ' Remaining')
-	//win condition
-	} if (guess === 0) {
-		wins++;
+	},
+
+	winCond: function() {
+		this.wins++;
+		victory.textContent = this.wins;
 		start.style.visibility = 'visible';
 		start.textContent = 'Well Done!';
-	//loss condition
-	} if (totalGuesses === 0) {
-		losses++;
+		resetText.style.visibility = 'visible';
+		hail.play();
+	},
+
+	loseCond: function() {
+		this.losses++;
+		defeat.textContent = this.losses;
 		start.style.visibility = 'visible';
 		start.textContent = 'Game Over!';
+		resetText.style.visibility = 'visible';
+	},
+
+	reset: function() {
+		currentPrez = presidents[Math.floor(Math.random() * presidents.length)];
+		guess = currentPrez.length;
+		totalGuesses = currentPrez.length + 4;
+		this.solution = [];
+		this.unused = [];
+		this.setup();
+	}
+};
+
+// setup game board
+game.setup();
+
+//game
+document.onkeypress = function (event) {
+	start.style.visibility = 'hidden';
+	resetText.style.visibility = 'hidden';
+	prez.style.display = 'block';
+	on.style.display = 'block';
+	victory.textContent = game.wins;
+	defeat.textContent = game.losses;
+	userInput = event.key;
+	//match
+	if (guess > 0) {
+		game.match();
+	//no match
+	} if ((game.solution.includes(userInput) === false) && (game.unused.includes(userInput) === false)) {
+		game.noMatch();
+	//win condition
+	} if (guess === 0) {
+		game.winCond();
+		game.reset();
+	//loss condition
+	} if (totalGuesses === 0) {
+		game.loseCond();
+		game.reset();
 	} 
-}
+};
