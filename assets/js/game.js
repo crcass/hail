@@ -52,12 +52,12 @@ var game = {
 	},
 
 	noMatch: function() {
-		if (userInput.match(lettersOnly)) {
+		// if (userInput.match(lettersOnly)) {
 		this.unused.push(userInput);
 		wrong.textContent = this.unused.join(' ');
 		totalGuesses--;
 		on.textContent = ('Unused Letters - ' + totalGuesses + ' Remaining')
-		}
+		// }
 	},
 
 	winCond: function() {
