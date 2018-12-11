@@ -24,7 +24,9 @@ var guess = currentPrez.length;
 
 var totalGuesses = currentPrez.length + 4;
 
-var userInput
+var userInput;
+
+var lettersOnly = /[A-Za-z]/g;
 
 var game = {
 
@@ -50,10 +52,12 @@ var game = {
 	},
 
 	noMatch: function() {
+		if (userInput.match(lettersOnly)) {
 		this.unused.push(userInput);
 		wrong.textContent = this.unused.join(' ');
 		totalGuesses--;
 		on.textContent = ('Unused Letters - ' + totalGuesses + ' Remaining')
+		}
 	},
 
 	winCond: function() {
