@@ -39,6 +39,15 @@ var game = {
       }
    },
 
+   start: function () {
+      start.style.visibility = 'hidden';
+      resetText.style.visibility = 'hidden';
+      prez.style.display = 'block';
+      on.style.display = 'block';
+      victory.textContent = game.wins;
+      defeat.textContent = game.losses;
+   },
+
    match: function() {
       for (j = 0; j < currentPrez.length; j++) {
          if (userInput === currentPrez[j]) {
@@ -88,15 +97,10 @@ var game = {
 // setup game board
 game.setup();
 
-//game
+// game
 document.onkeypress = function(event) {
-   start.style.visibility = 'hidden';
-   resetText.style.visibility = 'hidden';
-   prez.style.display = 'block';
-   on.style.display = 'block';
-   victory.textContent = game.wins;
-   defeat.textContent = game.losses;
    userInput = event.key;
+   game.start();
    if (guess > 0) {
       game.match();
    }
