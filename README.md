@@ -16,6 +16,10 @@
 	###iOS
 		* occasionally the first letter guessed will be correct but end up in the "Unused Letters" array
 		* pull-to-refresh does not always work in Chrome for iOS
+		* during the game, touching the screen outside of the keyboard area hides the "Unused Letters" array until another unused letter is guessed
+
+	###Android
+		* testers needed!
 
 	###All-Platforms
 		* some letters that are guessed correctly will not appear in the solution array or the "Unused Letters" array
