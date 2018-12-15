@@ -14,6 +14,8 @@ var defeat = document.getElementById('losses');
 
 var resetText = document.getElementById('reset-text');
 
+var mobileInput = document.getElementById('mobile-input');
+
 var hail = new Audio('./assets/audio/hailtothechief.mp3');
 
 var presidents = ['taft', 'wilson', 'harding', 'coolidge', 'hoover', 'roosevelt', 'truman', 'eisenhower', 'kennedy', 'johnson', 'nixon', 'ford', 'carter', 'reagan', 'bush', 'clinton'];
@@ -39,13 +41,15 @@ var game = {
       }
    },
 
-   start: function () {
+   start: function() {
       start.style.visibility = 'hidden';
       resetText.style.visibility = 'hidden';
       prez.style.display = 'block';
       on.style.display = 'block';
       victory.textContent = game.wins;
       defeat.textContent = game.losses;
+      answer.textContent = this.solution.join(' ');
+      wrong.textContent = "";
    },
 
    match: function() {
@@ -55,16 +59,15 @@ var game = {
             guess--;
          }
       }
-      answer.textContent = this.solution.join(' ');
    },
 
    noMatch: function() {
-      // if (userInput.match(/[A-Za-z]/g)) {
-      this.unused.push(userInput);
-      wrong.textContent = this.unused.join(' ');
-      totalGuesses--;
-      on.textContent = ('Unused Letters - ' + totalGuesses + ' Remaining')
-      // }
+      if (userInput.match(/[A-Za-z]/g)) {
+         this.unused.push(userInput);
+         wrong.textContent = this.unused.join(' ');
+         on.textContent = ('Unused Letters - ' + totalGuesses + ' Remaining')
+         totalGuesses--;
+      }
    },
 
    winCond: function() {
@@ -91,6 +94,16 @@ var game = {
       this.solution = [];
       this.unused = [];
       this.setup();
+   },
+
+   kbHandler: function() {
+      on.textContent = ('Unused Letters - ' + totalGuesses + ' Remaining');
+   },
+
+   mobile: function() {
+      mobileInput.style.visibility = 'visible';
+      mobileInput.focus();
+      mobileInput.style.visibility = 'hidden';
    }
 };
 
@@ -98,21 +111,31 @@ var game = {
 game.setup();
 
 // game
-document.onkeypress = function(event) {
-   userInput = event.key;
+document.onclick = function(event) {
    game.start();
-   if (guess > 0) {
-      game.match();
-   }
-   if ((game.solution.includes(userInput) === false) && (game.unused.includes(userInput) === false)) {
-      game.noMatch();
-   }
-   if (guess === 0) {
-      game.winCond();
-      game.reset();
-   }
-   if (totalGuesses === 0) {
-      game.loseCond();
-      game.reset();
+   game.kbHandler();
+   game.mobile();
+   document.onkeyup = function(event) {
+      userInput = event.key;
+      game.kbHandler();
+      if (guess > 0) {
+         game.match();
+         answer.textContent = game.solution.join(' ');
+      }
+      if ((game.solution.includes(userInput) === false) && (game.unused.includes(userInput) === false)) {
+         game.noMatch();
+         game.kbHandler();
+
+      }
+      if (guess === 0) {
+         game.winCond();
+         game.reset();
+         document.onkeyup = null;
+      }
+      if (totalGuesses === 0) {
+         game.loseCond();
+         game.reset();
+         document.onkeyup = null;
+      }
    }
 };

@@ -1,150 +1,155 @@
 body {
-	font-family: 'Merriweather', serif;
-	color: #E5E5E5;
-	background: url(../../assets/images/creampaper.png);
-
+  font-family: 'Merriweather', serif;
+  color: #E5E5E5;
+  background: url(../../assets/images/creampaper.png);
 }
 
 .container {
-	background-image: linear-gradient(to right, rgba(0, 0, 255, 0.5), rgba(255, 0, 0, 0.5)),
+  background-image: linear-gradient(to right, rgba(0, 0, 255, 0.5), rgba(255, 0, 0, 0.5)),
 					  url(../../assets/images/wh1.jpg);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	text-align: center;
-	height: 35rem;
-	display: flex;
-	flex-direction: column;
-	border-bottom: 0.5rem solid #F5B841;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  height: 35rem;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.5rem solid #F5B841;
 }
 
 main {
-	margin-top: 4rem;
+  margin-top: 4rem;
 }
 
 section {
-	margin-top: 4rem;
+  margin-top: 4rem;
 }
 
 h1 {
-	font-size: 2.5rem;
-	margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 h2 {
-	font-size: 2rem;
+  font-size: 2rem;
 }
 
 h3 {
-	font-size: 1.5rem;
-	margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 h5 {
-	margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 p {
-	font-size: 2rem;
-	text-transform: uppercase;
-	margin: 1rem 0;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin: 1rem 0;
 }
 
 #reset-text {
-	visibility: hidden;
-	margin-top: 3rem;
+  visibility: hidden;
+  margin-top: 3rem;
 }
 
 #prez, #on {
-	display: none;
+  display: none;
+}
+
+input {
+  visibility: hidden;
+  height: 1px;
+  width: 1px;
 }
 
 .bottom-content {
-	height: 9rem;
-	background-color: rgba(0, 0, 50, 0.75);
-	display: flex;
-	justify-content: center;
+  height: 9rem;
+  background-color: rgba(0, 0, 50, 0.75);
+  display: flex;
+  justify-content: center;
 }
 
 .score {
-	margin: 1rem 10rem;
-	text-align: center;
+  margin: 1rem 10rem;
+  text-align: center;
 }
 
 #reset {
-	margin-top: 0.75rem;
-	margin-left: 2rem;
-	width: 8%;
+  margin-top: 0.75rem;
+  margin-left: 2rem;
+  width: 8%;
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 footer {
-	background-color: rgba(64, 64, 64, 1);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	height: 2rem;
-	font-size: 0.75rem;
+  background-color: rgba(64, 64, 64, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;
+  font-size: 0.75rem;
 }
 
 footer span {
-	padding: 1rem;
+  padding: 1rem;
 }
 
 footer a {
-	text-decoration: inherit;
-	color: inherit;
+  text-decoration: inherit;
+  color: inherit;
 }
 
 footer a:hover {
-	color: #F8B3FF;
+  color: #F8B3FF;
 }
 
 @media screen and (max-width: 425px) {
-	.container {
-		height: 30rem;
-	}
+  .container {
+    height: 30rem;
+  }
 
-	h1 {
-		font-size: 2rem;
-	}
+  h1 {
+    font-size: 2rem;
+  }
 
-	h3 {
-		font-size: 1rem;
-	}
+  h3 {
+    font-size: 1rem;
+  }
 
-	h4 {
-		font-size: 0.75rem;
-	}
+  h4 {
+    font-size: 0.75rem;
+  }
 
-	.section {
-		margin-top: 2rem;
-	}
+  .section {
+    margin-top: 2rem;
+  }
 
-	#start {
-		font-size: 1.5rem;
-	}
+  #start {
+    font-size: 1.5rem;
+  }
 
-	#reset-text {
-		margin-top: 0;
-	}
+  #reset-text {
+    margin-top: 0;
+  }
 
-	.score {
-		margin: 1rem 2rem;
-	}
+  .score {
+    margin: 1rem 2rem;
+  }
 
-	h2 {
-		font-size: 1.5rem;
-	}
+  h2 {
+    font-size: 1.5rem;
+  }
 
-	#reset {
-		margin: 1rem;
-	}
+  #reset {
+    margin: 1rem;
+  }
 }
