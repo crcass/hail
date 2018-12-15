@@ -10,7 +10,7 @@ As the user guesses incorrect letters, the number of remaining guesses will redu
 If the user correctly guesses all the correct letters before the remaining guesses = 0, a win screen will display and audio will play.
 If the user reduces the remaining letters to 0 before correctly guessing the answer, a defeat screen will display.
 
-In either case, clicking (or touching on mobile) anywhere will reset the the game and increment the score depending on the win or loss condition.
+In either case, clicking (or touching on mobile) anywhere will reset the game and increment the score depending on the win or loss condition.
 
 ## Known Issues
 ### iOS
