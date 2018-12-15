@@ -13,14 +13,14 @@
 	In either case, pressing any key will reset the the game and increment the score depending on the win or loss condition.
 
 ## Known Issues
-	###iOS
-		* occasionally the first letter guessed will be correct but end up in the "Unused Letters" array
-		* pull-to-refresh does not always work in Chrome for iOS
-		* during the game, touching the screen outside of the keyboard area hides the "Unused Letters" array until another unused letter is guessed
+### iOS
+	* occasionally the first letter guessed will be correct but end up in the "Unused Letters" array
+	* pull-to-refresh does not always work in Chrome for iOS
+	* during the game, touching the screen outside of the keyboard area hides the "Unused Letters" array until another unused letter is guessed
 
-	###Android
-		* testers needed!
+### Android
+	* testers needed!
 
-	###All-Platforms
-		* some letters that are guessed correctly will not appear in the solution array or the "Unused Letters" array
-		* a few non-alpha characters are accepted as input. Currently those key are counted so guess carefully!
+### All-Platforms
+	* some letters that are guessed correctly will not appear in the solution array or the "Unused Letters" array
+	* a few non-alpha characters are accepted as input. Currently those key are counted so guess carefully!
