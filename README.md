@@ -11,3 +11,12 @@
 	If the user reduces the remaining letters to 0 before correctly guessing the answer, a defeat screen will display.
 
 	In either case, pressing any key will reset the the game and increment the score depending on the win or loss condition.
+
+## Known Issues
+	###iOS
+		* occasionally the first letter guessed will be correct but end up in the "Unused Letters" array
+		* pull-to-refresh does not always work in Chrome for iOS
+
+	###All-Platforms
+		* some letters that are guessed correctly will not appear in the solution array or the "Unused Letters" array
+		* a few non-alpha characters are accepted as input. Currently those key are counted so guess carefully!

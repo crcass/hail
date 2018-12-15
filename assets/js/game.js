@@ -100,7 +100,7 @@ var game = {
       on.textContent = ('Unused Letters - ' + totalGuesses + ' Remaining');
    },
 
-   mobile: document.ontouchstart = function() {
+   mobile: document.ontouchend = function() {
       mobileInput.style.visibility = 'visible';
       mobileInput.focus();
       mobileInput.style.visibility = 'hidden';
@@ -111,7 +111,7 @@ var game = {
 game.setup();
 
 // game
-document.onclick = function(event) {
+var gameLoop = function(event) {
    game.start();
    game.kbHandler();
    game.mobile();
@@ -139,3 +139,6 @@ document.onclick = function(event) {
       }
    }
 };
+
+document.addEventListener('click', gameLoop, false);
+document.addEventListener('touchend', gameLoop, false);
