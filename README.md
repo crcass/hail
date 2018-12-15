@@ -21,7 +21,7 @@ In either case, clicking (or touching on mobile) anywhere will reset the game an
 ### Android
 * testers needed!
 
-### All-Platforms
+### All Platforms
 * some letters that are guessed correctly will not appear in the solution array or the "Unused Letters" array
 * pressing a correct letter more than once will lower the number of correct letters needed for win condition to trigger
 * a few non-alpha characters are accepted as input. Currently those key are counted so guess carefully!
