@@ -100,7 +100,7 @@ var game = {
       on.textContent = ('Unused Letters - ' + totalGuesses + ' Remaining');
    },
 
-   mobile: function() {
+   mobile: document.ontouchstart = function() {
       mobileInput.style.visibility = 'visible';
       mobileInput.focus();
       mobileInput.style.visibility = 'hidden';
