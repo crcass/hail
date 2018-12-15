@@ -130,11 +130,13 @@ var gameLoop = function(event) {
          game.winCond();
          game.reset();
          document.onkeyup = null;
+         document.activeElement.blur();
       }
       if (totalGuesses === 0) {
          game.loseCond();
          game.reset();
          document.onkeyup = null;
+         document.activeElement.blur();
       }
    }
 };
