@@ -125,7 +125,6 @@ var gameLoop = function(event) {
       if ((game.solution.includes(userInput) === false) && (game.unused.includes(userInput) === false)) {
          game.noMatch();
          game.kbHandler();
-
       }
       if (guess === 0) {
          game.winCond();
@@ -140,5 +139,6 @@ var gameLoop = function(event) {
    }
 };
 
+// event listeners for game loop
 document.addEventListener('click', gameLoop, false);
 document.addEventListener('touchend', gameLoop, false);
