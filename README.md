@@ -1,4 +1,4 @@
-# Hail to the Cheif!
+# Hail to the Chief!
 
 ## Game Start
 User can click or touch anywhere to begin. 
