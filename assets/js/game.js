@@ -59,6 +59,7 @@ var game = {
             guess--;
          }
       }
+      answer.textContent = game.solution.join(' ');
    },
 
    noMatch: function() {
@@ -77,6 +78,8 @@ var game = {
       start.textContent = 'Well Done!';
       resetText.style.visibility = 'visible';
       hail.play();
+      document.onkeyup = null;
+      document.activeElement.blur();
    },
 
    loseCond: function() {
@@ -85,6 +88,8 @@ var game = {
       start.style.visibility = 'visible';
       start.textContent = 'Game Over!';
       resetText.style.visibility = 'visible';
+      document.onkeyup = null;
+      document.activeElement.blur();
    },
 
    reset: function() {
@@ -120,7 +125,6 @@ var gameLoop = function(event) {
       game.kbHandler();
       if (guess > 0) {
          game.match();
-         answer.textContent = game.solution.join(' ');
       }
       if ((game.solution.includes(userInput) === false) && (game.unused.includes(userInput) === false)) {
          game.noMatch();
@@ -129,14 +133,10 @@ var gameLoop = function(event) {
       if (guess === 0) {
          game.winCond();
          game.reset();
-         document.onkeyup = null;
-         document.activeElement.blur();
       }
       if (totalGuesses === 0) {
          game.loseCond();
          game.reset();
-         document.onkeyup = null;
-         document.activeElement.blur();
       }
    }
 };
