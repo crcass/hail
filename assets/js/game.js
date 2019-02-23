@@ -18,7 +18,24 @@ var mobileInput = document.getElementById('mobile-input');
 
 var hail = new Audio('./assets/audio/hailtothechief.mp3');
 
-var presidents = ['taft', 'wilson', 'harding', 'coolidge', 'hoover', 'roosevelt', 'truman', 'eisenhower', 'kennedy', 'johnson', 'nixon', 'ford', 'carter', 'reagan', 'bush', 'clinton'];
+var presidents = [
+   'taft',
+   'wilson',
+   'harding',
+   'coolidge',
+   'hoover',
+   'roosevelt',
+   'truman',
+   'eisenhower',
+   'kennedy',
+   'johnson',
+   'nixon',
+   'ford',
+   'carter',
+   'reagan',
+   'bush',
+   'clinton'
+];
 
 var currentPrez = presidents[Math.floor(Math.random() * presidents.length)];
 
@@ -29,7 +46,6 @@ var totalGuesses = currentPrez.length + 4;
 var userInput;
 
 var game = {
-
    solution: [],
    unused: [],
    wins: 0,
@@ -49,14 +65,16 @@ var game = {
       victory.textContent = game.wins;
       defeat.textContent = game.losses;
       answer.textContent = this.solution.join(' ');
-      wrong.textContent = "";
+      wrong.textContent = '';
    },
 
    match: function() {
-      for (j = 0; j < currentPrez.length; j++) {
-         if (userInput === currentPrez[j]) {
-            this.solution.splice([j], 1, userInput);
-            guess--;
+      if (!this.solution.includes(userInput)) {
+         for (j = 0; j < currentPrez.length; j++) {
+            if (userInput === currentPrez[j]) {
+               this.solution.splice([j], 1, userInput);
+               guess--;
+            }
          }
       }
       answer.textContent = game.solution.join(' ');
@@ -66,7 +84,7 @@ var game = {
       if (userInput.match(/[A-Za-z]/g)) {
          this.unused.push(userInput);
          wrong.textContent = this.unused.join(' ');
-         on.textContent = ('Unused Letters - ' + totalGuesses + ' Remaining')
+         on.textContent = 'Unused Letters - ' + totalGuesses + ' Remaining';
          totalGuesses--;
       }
    },
@@ -102,14 +120,14 @@ var game = {
    },
 
    kbHandler: function() {
-      on.textContent = ('Unused Letters - ' + totalGuesses + ' Remaining');
+      on.textContent = 'Unused Letters - ' + totalGuesses + ' Remaining';
    },
 
-   mobile: document.ontouchend = function() {
+   mobile: (document.ontouchend = function() {
       mobileInput.style.visibility = 'visible';
       mobileInput.focus();
       mobileInput.style.visibility = 'hidden';
-   }
+   })
 };
 
 // setup game board
@@ -126,7 +144,10 @@ var gameLoop = function(event) {
       if (guess > 0) {
          game.match();
       }
-      if ((game.solution.includes(userInput) === false) && (game.unused.includes(userInput) === false)) {
+      if (
+         game.solution.includes(userInput) === false &&
+         game.unused.includes(userInput) === false
+      ) {
          game.noMatch();
          game.kbHandler();
       }
@@ -138,7 +159,7 @@ var gameLoop = function(event) {
          game.loseCond();
          game.reset();
       }
-   }
+   };
 };
 
 // event listeners for game loop
