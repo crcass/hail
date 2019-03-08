@@ -57,7 +57,7 @@ var game = {
       }
    },
 
-   start: function() {
+   start() {
       start.style.visibility = 'hidden';
       resetText.style.visibility = 'hidden';
       prez.style.display = 'block';
@@ -68,11 +68,11 @@ var game = {
       wrong.textContent = '';
    },
 
-   match: function() {
+   match() {
       if (!this.solution.includes(userInput)) {
-         for (j = 0; j < currentPrez.length; j++) {
-            if (userInput === currentPrez[j]) {
-               this.solution.splice([j], 1, userInput);
+         for (i = 0; i < currentPrez.length; i++) {
+            if (userInput === currentPrez[i]) {
+               this.solution.splice([i], 1, userInput);
                guess--;
             }
          }
@@ -80,16 +80,16 @@ var game = {
       answer.textContent = game.solution.join(' ');
    },
 
-   noMatch: function() {
+   noMatch() {
       if (userInput.match(/[A-Za-z]/g)) {
          this.unused.push(userInput);
          wrong.textContent = this.unused.join(' ');
-         on.textContent = 'Unused Letters - ' + totalGuesses + ' Remaining';
+         on.textContent = `Unused Letters - ${totalGuesses} Remaining`;
          totalGuesses--;
       }
    },
 
-   winCond: function() {
+   winCond() {
       this.wins++;
       victory.textContent = this.wins;
       start.style.visibility = 'visible';
@@ -100,7 +100,7 @@ var game = {
       document.activeElement.blur();
    },
 
-   loseCond: function() {
+   loseCond() {
       this.losses++;
       defeat.textContent = this.losses;
       start.style.visibility = 'visible';
@@ -110,7 +110,7 @@ var game = {
       document.activeElement.blur();
    },
 
-   reset: function() {
+   reset() {
       currentPrez = presidents[Math.floor(Math.random() * presidents.length)];
       guess = currentPrez.length;
       totalGuesses = currentPrez.length + 4;
@@ -119,8 +119,8 @@ var game = {
       this.setup();
    },
 
-   kbHandler: function() {
-      on.textContent = 'Unused Letters - ' + totalGuesses + ' Remaining';
+   kbHandler() {
+      on.textContent = `Unused Letters - ${totalGuesses} Remaining`;
    },
 
    mobile: (document.ontouchend = function() {
@@ -145,8 +145,8 @@ var gameLoop = function(event) {
          game.match();
       }
       if (
-         game.solution.includes(userInput) === false &&
-         game.unused.includes(userInput) === false
+         !game.solution.includes(userInput) &&
+         !game.unused.includes(userInput)
       ) {
          game.noMatch();
          game.kbHandler();
